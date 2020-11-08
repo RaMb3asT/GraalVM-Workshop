@@ -66,7 +66,7 @@ Create a file called pythonTest.py using your preferred text editor in the *exer
 print ('Hello from Python!')
 ```
 #### Run Python
-In order to open run simple Python commands just use the line below, which will open an interactive shell:
+In order to run simple Python commands just use the line below, which will open an interactive shell:
 ```
 graalpython
 ```
@@ -82,10 +82,10 @@ gu install r
 #### R file
 Create a file called rTest.py using your preferred text editor in the *exercises* directory on your Desktop and paste the following code.
 ```
-print (Hello from R!)
+print ('Hello from R!')
 ```
 #### Run R
-In order to open run simple R commands just use the line below, which will open an interactive shell:
+In order to run simple R commands just use the line below, which will open an interactive shell:
 ```
 R
 ```
