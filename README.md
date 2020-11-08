@@ -96,7 +96,7 @@ Rscript testR.py
 ### Performance
 ### Native image
 ### Polyglot capabilities
-Copy the code below into a text editor, save it as `Polyglot.java` and fill-in the empty spots in the method `pyAbs` as to exercise the different methods of combining programming languages in GraalVM.
+Copy the code below into a text editor, save it as `Polyglot.java` in the *exercises* directory and fill-in the empty spots in the method `pyAbs` as to practice the different methods of combining programming languages in GraalVM.
 ```java
 import org.graalvm.polyglot.*;
 import org.graalvm.polyglot.proxy.*;
@@ -168,7 +168,7 @@ public class Polyglot {
     }
 }
 ```
-In order to run the code above, use the following commands:
+In order to run the code above, navigate via the GraalVM bash to the *exercises* directory and run:
 ```
 javac Polyglot.java
 java Polyglot
