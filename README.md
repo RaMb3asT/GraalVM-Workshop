@@ -55,7 +55,6 @@ The third line of the result states that the virtual machine used by Java is act
 ### Java
 ### JavaScript
 ### Python
-#### Install Python
 The Python runtime is not provided by default and it can be added with the GraalVM Updater tool by running the command below in the GraalVM bash.
 ```
 gu install python
@@ -91,9 +90,86 @@ R
 ```
 As to run the file created previously, navigate via the GraalVM bash to the *exercises* directory and run:
 ```
-Rscript testPython.py
+Rscript testR.py
 ```
 ## Advanced exercises
 ### Performance
 ### Native image
 ### Polyglot capabilities
+Copy the code below into a text editor, save it as `Polyglot.java` and fill-in the empty spots in the method `pyAbs` as to exercise the different methods of combining programming languages in GraalVM.
+```java
+import org.graalvm.polyglot.*;
+import org.graalvm.polyglot.proxy.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.io.IOException;
+
+public class Polyglot {
+
+    //Context - GraalVM polyglot class that allows to evaluate code of guest languages
+    //Bindings - Values that represents the top-most members of a guest language; API to access foreign libraries
+
+    // Embedding JavaScript
+    public static void jsSqrt(int input) {
+        //Load JavaScript file
+        String jsFile = "";
+        try {
+            jsFile = new String(Files.readAllBytes(Paths.get("jsTest.js")));
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        //Run JavaScript code
+        try (Context context = Context.create("js")){
+           
+           //Run JavaScript code from a file
+           context.eval("js", jsFile);
+
+           //Run JavaScript code from a String
+           String jsCode = "print('Running from JavaScript code string: ');" + "print(Math.sqrt(" + input + "));";
+           context.eval("js", jsCode);
+
+           //Run JavaScript code from bindings
+           Value jsBindings = context.getBindings("js");
+           System.out.println("Running JavaScript from bindings: " + jsBindings.getMember("Math").getMember("sqrt").execute(input));
+        }
+    }
+
+    // Embedding Python
+    public static void pyAbs(int input) {
+        //Load Python file
+        String pythonFile = "";
+        try {
+            pythonFile = new String(Files.readAllBytes(Paths.get("pythonTest.py")));
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
+        
+        //Run Python code
+        try (Context context = Context.create("python")){
+           //Run Python code from a file
+           //Code here
+
+           //Run Python code from a String
+           //Code here
+
+           //Run Python code from bindings
+           //Code here
+        }
+    }
+
+   public static void main(String[] args) {
+        jsSqrt(9);
+        System.out.println("===============");
+        //Toggle comment below once you have implemented the pyAbs method
+        //pyAbs(-3);
+    }
+}
+```
+In order to run the code above, use the following commands:
+```
+javac Polyglot.java
+java Polyglot
+```
