@@ -109,7 +109,7 @@ public class Polyglot {
     //Context - GraalVM polyglot class that allows to evaluate code of guest languages
     //Bindings - Values that represents the top-most members of a guest language; API to access foreign libraries
 
-    // Embedding JavaScript
+    //Embedding JavaScript - Print out the square root of a number by incorporating GraalVM polyglot features
     public static void jsSqrt(int input) {
         //Load JavaScript file
         String jsFile = "";
@@ -136,7 +136,7 @@ public class Polyglot {
         }
     }
 
-    // Embedding Python
+    // Embedding Python - Print out the absolute value of a number by incorporating GraalVM polyglot features
     public static void pyAbs(int input) {
         //Load Python file
         String pythonFile = "";
