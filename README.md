@@ -60,7 +60,20 @@ The Python runtime is not provided by default and it can be added with the Graal
 ```
 gu install python
 ```
-####
+#### Python file
+Create a file called pythonTest.py using your preffered text editor in the *exercises* directory on your Desktop and paste the following code.
+```
+print ('Hello from Python!')
+```
+#### Run Python
+In order to open run simple Python commands just use the line below, which will open an interactive shell:
+```
+graalpython
+```
+As to run the file created previously, navigate through the GraalVM bash to the *exercises* directory and run:
+```
+graalpython testPython.py
+```
 ### R
 ## Advanced exercises
 ### Performance
