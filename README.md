@@ -22,12 +22,18 @@ Run the command below:
 ```
 This command will pull a Docker image of GraalVM that would be accessible both via Docker Desktop as well as your command line.
 #### Step 2
-Given the Docker image was installed successfully, the next step is to run the image in a Docker container by running the command below.
+Given the Docker image was installed successfully, the next step is to run the image in a Docker.
+To do so, first create a folder called *exercises* on your Desktop, then via the command line navigate to that folder and run the command below. The folder will be used as a directory that connects the docker container and your machine and will store the files used in the workshop.
 ```
-    docker run -it --name test-graalvm docker.io/oracle/graalvm-ce bash
+    docker run -it -v %cd%:/exercises --name test-graalvm docker.io/oracle/graalvm-ce bash
 ```
 This command will run an instance of GraalVM in a container with the name of *test-graalvm* and will automatically enter into the GraalVM CLI.   
 If you do not want to get into the CLI immediately, remove the `bash` part from the end of the command and enter the GraalVM CLI via Docker Desktop.
+
+If you closed the GraalVM bash, the line below will reopen it without running another instace of GraalVM.
+```
+    docker exec -it test-graalvm bash
+```
 #### Step 3
 To check if GraalVM is running properly, run the command below in the GraalVM CLI. It gives information about the Java version, Runtime Environment as well Virtual machine utilized.
 ```
@@ -49,6 +55,12 @@ The third line of the result states that the virtual machine used by Java is act
 ### Java
 ### JavaScript
 ### Python
+#### Install Python
+The Python runtime is not provided by default and it can be added with the GraalVM Updater tool by running the command below in the GraalVM bash.
+```
+gu install python
+```
+####
 ### R
 ## Advanced exercises
 ### Performance
