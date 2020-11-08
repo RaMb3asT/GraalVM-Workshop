@@ -62,7 +62,7 @@ gu install python
 #### Python file
 Create a file called pythonTest.py using your preferred text editor in the *exercises* directory on your Desktop and paste the following code.
 ```
-print ('Hello from Python!')
+print ('Hello from Python file!')
 ```
 #### Run Python
 In order to run simple Python commands just use the line below, which will open an interactive shell:
@@ -81,7 +81,7 @@ gu install r
 #### R file
 Create a file called rTest.py using your preferred text editor in the *exercises* directory on your Desktop and paste the following code.
 ```
-print ('Hello from R!')
+print ('Hello from R file!')
 ```
 #### Run R
 In order to run simple R commands just use the line below, which will open an interactive shell:
