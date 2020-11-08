@@ -45,3 +45,12 @@ The third line of the result states that the virtual machine used by Java is act
     Java(TM) SE Runtime Environment (build 1.8.0_181-b13)
     Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)
 ```
+## Basic exercises
+### Java
+### JavaScript
+### Python
+### R
+## Advanced exercises
+### Performance
+### Native image
+### Polyglot capabilities
