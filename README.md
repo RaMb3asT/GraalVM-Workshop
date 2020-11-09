@@ -25,13 +25,11 @@ This command will pull a Docker image of GraalVM that would be accessible both v
 Given the Docker image was installed successfully, the next step is to run the image in a Docker.
 To do so, first create a folder called *exercises* on your Desktop, then via the command line navigate to that folder and run the command below. The folder will be used as a directory that connects the docker container and your machine and will store the files used in the workshop.
 
-For Windows Command Prompt:
 ```
+    //For Windows Command Prompt
     docker run -it -v %cd%:/exercises --name test-graalvm docker.io/oracle/graalvm-ce bash
-```
-
-For Windows PowerShell and Linux terminal:
-```
+    //Or
+    //For Windows PowerShell and Linux terminal:
     docker run -it -v ${pwd}:/exercises --name test-graalvm docker.io/oracle/graalvm-ce bash
 ````
 
