@@ -83,7 +83,48 @@ The third line of the result states that the virtual machine used by Java is act
 ```
 ## Basic exercises
 ### Java
+Java is the default programming language supported by GraalVM. In addition, GraalVM supports other JVM based languages, such as Kotlin and Scala.
+#### Java file
+Create a file called JavaTest.java in your preferred text editor in the *exercises* directory on your Desktop and paste the following code:
+```
+public class JavaTest {
+
+    public static void main(String[] args){
+        long millis = System.currentTimeMillis();
+        java.util.Date now = new java.util.Date(millis);
+        System.out.println(now);
+        System.out.println("Hello World!");
+    }
+}
+```
+#### Run Java
+In order to run java you must first use the javac command to create a .class file.
+```
+javac JavaTest.java
+```
+Then you can run the .class file, by writing the following command:
+```
+java JavaTest
+```
 ### JavaScript
+The javascript runtime is provided included in GraalVM by default, so no installations will be needed.
+#### JavaScript file
+Create a file called javascriptTest.js in your preferred text editor in the *exercises* directory on your Desktop and paste the following code:
+```
+var now = new Date();
+console.log(now);
+console.log("Hello world!");
+```
+#### Run JavaScript
+There are two ways to run the js file, using the standard "js" command, like so:
+```
+js javascriptTest.js
+```
+Or by using node, like so:
+```
+node javascriptTest.js
+```
+Node js is supported by default in graalvm, which is quite convenient for creating server applications.
 ### Python
 The Python runtime is not provided by default and it can be added with the GraalVM Updater tool by running the command below in the GraalVM bash.
 ```
