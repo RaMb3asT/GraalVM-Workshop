@@ -89,7 +89,7 @@ The third line of the result states that the virtual machine used by Java is act
 ### Java
 Java is the default programming language supported by GraalVM. In addition, GraalVM supports other JVM based languages, such as Kotlin and Scala.
 #### Java file
-Create a file called JavaTest.java in your preferred text editor in the *exercises* directory on your Desktop and paste the following code:
+Create a file called `JavaTest.java` in your preferred text editor in the *exercises* directory on your Desktop and paste the following code:
 ```
 public class JavaTest {
 
@@ -113,7 +113,7 @@ java JavaTest
 ### JavaScript
 The javascript runtime is provided included in GraalVM by default, so no installations will be needed.
 #### JavaScript file
-Create a file called javascriptTest.js in your preferred text editor in the *exercises* directory on your Desktop and paste the following code:
+Create a file called `javascriptTest.js` in your preferred text editor in the *exercises* directory on your Desktop and paste the following code:
 ```
 var now = new Date();
 console.log(now);
@@ -135,7 +135,7 @@ The Python runtime is not provided by default and it can be added with the Graal
 gu install python
 ```
 #### Python file
-Create a file called pythonTest.py using your preferred text editor in the *exercises* directory on your Desktop and paste the following code.
+Create a file called `pythonTest.py` using your preferred text editor in the *exercises* directory on your Desktop and paste the following code.
 ```
 print ('Hello from Python file!')
 ```
@@ -154,7 +154,7 @@ The R runtime is not provided by default and it can be added with the GraalVM Up
 gu install r
 ```
 #### R file
-Create a file called rTest.py using your preferred text editor in the *exercises* directory on your Desktop and paste the following code.
+Create a file called `rTest.r` using your preferred text editor in the *exercises* directory on your Desktop and paste the following code.
 ```
 print ('Hello from R file!')
 ```
@@ -189,7 +189,7 @@ public class Polyglot {
         //Load JavaScript file
         String jsFile = "";
         try {
-            jsFile = new String(Files.readAllBytes(Paths.get("jsTest.js")));
+            jsFile = new String(Files.readAllBytes(Paths.get("javascriptTest.js")));
         }
         catch(IOException e) {
             e.printStackTrace();
