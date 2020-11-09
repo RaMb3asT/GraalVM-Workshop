@@ -30,7 +30,7 @@ For Windows Command Prompt:
     docker run -it -v %cd%:/exercises --name test-graalvm docker.io/oracle/graalvm-ce bash
 ```
 
-For Windows Powershell and Linux bash:
+For Windows PowerShell and Linux terminal:
 ```
     docker run -it -v ${pwd}:/exercises --name test-graalvm docker.io/oracle/graalvm-ce bash
 ````
