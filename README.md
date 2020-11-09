@@ -1,5 +1,29 @@
 # GraalVM-Workshop
 GraalVM Workshop as part of the module - Enterprise Software Development 2020-2021 at Fontys Venlo University of Applied Sciences.
+## Table of contents
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+    + [Manual installation](#manual-installation)
+      - [Windows](#windows)
+      - [macOS](#macos)
+      - [Linux](#linux)
+    + [Docker installation](#docker-installation)
+      - [Step 1](#step-1)
+      - [Step 2](#step-2)
+      - [Step 3](#step-3)
+  * [Basic exercises](#basic-exercises)
+    + [Java](#java)
+    + [JavaScript](#javascript)
+    + [Python](#python)
+      - [Python file](#python-file)
+      - [Run Python](#run-python)
+    + [R](#r)
+      - [R file](#r-file)
+      - [Run R](#run-r)
+  * [Advanced exercises](#advanced-exercises)
+    + [Performance](#performance)
+    + [Native image](#native-image)
+    + [Polyglot capabilities](#polyglot-capabilities)
 ## Prerequisites
 For the successful participation in the workshop, [Docker](https://www.docker.com/get-started) as well as a text editor (e.g. Visual Studio Code) have to be previously installed by the participants.
 ## Installation
@@ -29,7 +53,7 @@ To do so, first create a folder called *exercises* on your Desktop, then via the
     //For Windows Command Prompt
     docker run -it -v %cd%:/exercises --name test-graalvm docker.io/oracle/graalvm-ce bash
     //Or
-    //For Windows PowerShell and Linux terminal:
+    //For Windows PowerShell and Linux terminal
     docker run -it -v ${pwd}:/exercises --name test-graalvm docker.io/oracle/graalvm-ce bash
 ````
 
