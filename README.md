@@ -65,13 +65,18 @@ To do so, first create a folder called *exercises* on your Desktop, then via the
 ```
     //For Windows Command Prompt
     docker run -it -v %cd%:/exercises --name test-graalvm docker.io/oracle/graalvm-ce bash
-    //Or
+    
     //For Windows PowerShell and Linux terminal
-    docker run -it -v ${pwd}:/exercises --name test-graalvm docker.io/oracle/graalvm-ce bash
+    docker run -it -v ${PWD}:/exercises --name test-graalvm docker.io/oracle/graalvm-ce bash
 ````
 
 This command will run an instance of GraalVM in a container with the name of *test-graalvm* and will automatically enter into the GraalVM CLI.   
 If you do not want to get into the CLI immediately, remove the `bash` part from the end of the command and enter the GraalVM CLI via Docker Desktop.
+
+If you stopped the GraalVM container from running, you can start it again with the following line:
+```
+    docker start test-graalvm
+```
 
 If you closed the GraalVM bash, the line below will reopen it without running another instace of GraalVM.
 ```
