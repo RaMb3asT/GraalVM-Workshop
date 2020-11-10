@@ -169,7 +169,129 @@ Rscript testR.py
 ```
 ## Advanced exercises
 ### Performance
+In this exercise we will observe the performance benefits of GraalVM over the default HotSpot JVM.
+#### Create the file
+In order for this example to work, create an empty file called HeavyStreamComputation.java. In it, place the following code:
+```
+/* This application at its core reads a sentence as an execution argument,
+and counts the uppercase characters in the sentence many times through
+the usage of stream operations and lambdas. It is used for benchmarking purposes.
+ */
+
+public class HeavyStreamComputation {
+    static final int ITERATIONS = Math.max(Integer.getInteger("iterations", 1), 1);
+
+
+    // args contains commandline arguments
+    public static void main(String[] args) {
+        //Combines commandline args as a sentance.
+        String sentence = String.join(" ", args);
+        //nested forloop for extra computation)
+        for (int iter = 0; iter < ITERATIONS; iter++) {
+            if (ITERATIONS != 1) System.out.println("-- iteration " + (iter + 1) + " --");
+
+            //total uppercase characters counted
+            long total = 0;
+
+            //time vars
+            long start = System.currentTimeMillis();
+            long last = start;
+
+            //use stream operations 10 million times
+            for (int i = 1; i < 10_000_000; i++) {
+                total += sentence.chars().filter(Character::isUpperCase).count();
+
+                //every 1 million iterations print and reset time.
+                if (i % 1_000_000 == 0) {
+                    long now = System.currentTimeMillis();
+                    System.out.printf("%d (%d ms)%n", i / 1_000_000, now - last);
+                    last = now;
+                }
+            }
+            //print out the total uppercase chars counted, as well as the total exec time
+            System.out.printf("total: %d (%d ms)%n", total, System.currentTimeMillis() - start);
+        }
+    }
+}
+```
+#### Compile it
+In order for us to test running it on GraalVM and the JVM, we must first compile it. Write down the following command in the GraalVM command line:
+```
+javac HeavyStreamComputation.java 
+```
+
+#### Run it on GraalVM
+In order to run it on GraalVM, we must first compile it, and then execute like a normal java application. If you read the comment in the application code, you would know that you need to provide a sentance through the program arguments. The sentence chosen for this example is:
+```
+I aM a RanDom peRson that LoVes to Use aRbiTrarY CapItAliZaTion
+```
+so, the full command looks like so.
+```
+java HeavyStreamComputation I aM a RanDom peRson that LoVes to Use aRbiTrarY CapItAliZaTion
+```
+#### Run it on the default JVM
+To run it on the default JVM, we must specify an option before the java execution command, namely ```-XX:-UseJVMCICompiler```. The javac command should then look like this:
+```
+java -XX:-UseJVMCICompiler HeavyStreamComputation I aM a RanDom peRson that LoVes to Use aRbiTrarY CapItAliZaTion
+```
+
+#### Results discussion
+Generally speaking the GraalVM version should be faster. By how much depends on system factors, such as processor core count, memory, etc. A large advantage of GraalVM is its utilization of threading and multiprocessing in terms of StreamAPI.
+
 ### Native image
+In this exercise we will see how to create a simple native image executable, as well as a native image class library. Native image is not a part of the default GraalVM, and must be downloaded and installed seperately.
+#### Install native image
+Fortunately you have all you need to install native image in GraalVM. In order to install native image, paste this command in the GraalVM CLI:
+```
+gu install native-image
+```
+Docker should already provide the rest of the necessary tools, such as gcc, which are needed for native images. In case you are not usin docker, you need to take a few extra steps:
+##### On Linux
+The extra tools needed are:  glibc-devel, zlib-devel, gcc, and some distros of linux may need libstdc++-static. Depending on your linux distribution, enter the following commands into the commandprompt:
+For Oracle Linux:
+```
+sudo yum install gcc glibc-devel zlib-devel
+```
+For Ubuntu Linux:
+```
+sudo apt-get install build-essential libz-dev zlib1g-dev
+```
+For other Linux:
+```
+sudo dnf install gcc glibc-devel zlib-devel libstdc++-static
+```
+For MacOS:
+```
+xcode-select --install
+```
+##### On Windows
+You need MSVC 2017 15.5.5 or later version.
+
+#### Build an image
+In order to build an image we need a .class or a .jar file, meaning that we have to compile or .java class/application. To make this tutorial simpler, I will be using the JavaTest.java class, which we covered in the Java tutorial. First we must compile it, in case we haven't already.
+```
+javac JavaTest.java
+```
+This should yield a JavaTest.class file in the exercises directory. In order to build an image from this class file, we need to provide the following command:
+```
+native-image JavaTest
+```
+This will leave us with an executable file named javatest. The nature of the executable file depends on the OS. For example, on windows it will be an exe, and in docker it will be a linux executable file. We run it as we would run any other program:
+```
+./javatest
+```
+Note that the name is all in lowercase now.
+The general syntax for building a native image can be seen below (with a .class object at the top, .jar object at the bottom):
+```
+native-image [options] class [imagename] [options]
+```
+```
+native-image [options] -jar jarfile [imagename] [options]
+```
+If you would like to have some options information, feel free to read here:
+https://www.graalvm.org/reference-manual/native-image/Options/
+
+
 ### Polyglot capabilities
 Copy the code below into a text editor, save it as `Polyglot.java` in the *exercises* directory and fill-in the empty spots in the method `pyAbs` as to practice the different methods of combining programming languages in GraalVM.
 ```java
