@@ -174,7 +174,7 @@ R
 ```
 As to run the file created previously, navigate via the GraalVM bash to the *exercises* directory and run:
 ```
-Rscript testR.py
+Rscript rTest.r
 ```
 ## Advanced exercises
 ### Performance
