@@ -26,7 +26,16 @@ GraalVM Workshop as part of the module - Enterprise Software Development 2020-20
       - [Run R](#run-r)
   * [Advanced exercises](#advanced-exercises)
     + [Performance](#performance)
+      - [Create the file](#create-the-file)
+      - [Compile it](#compile-it)
+      - [Run it on GraalVm](#run-it-on-graalvm)
+      - [Run it on the default JVM](#run-it-on-the-default-jvm)
+      - [Results discussion](#results-discussion)
     + [Native image](#native-image)
+      + [Install native image](#install-native-image)
+        - [On Linux or MacOS](#on-linux-or-macos)
+        - [On Windows](#on-windows)
+      - [Build an image](#build-an-image)
     + [Polyglot capabilities](#polyglot-capabilities)
 ## Prerequisites
 For the successful participation in the workshop, [Docker](https://www.docker.com/get-started) as well as a text editor (e.g. Visual Studio Code) have to be previously installed by the participants.
@@ -246,7 +255,7 @@ Fortunately you have all you need to install native image in GraalVM. In order t
 gu install native-image
 ```
 Docker should already provide the rest of the necessary tools, such as gcc, which are needed for native images. In case you are not usin docker, you need to take a few extra steps:
-##### On Linux
+##### On Linux or MacOS
 The extra tools needed are:  glibc-devel, zlib-devel, gcc, and some distros of linux may need libstdc++-static. Depending on your linux distribution, enter the following commands into the commandprompt:
 For Oracle Linux:
 ```
@@ -288,8 +297,6 @@ native-image [options] class [imagename] [options]
 ```
 native-image [options] -jar jarfile [imagename] [options]
 ```
-If you would like to have some options information, feel free to read here:
-https://www.graalvm.org/reference-manual/native-image/Options/
 
 
 ### Polyglot capabilities
